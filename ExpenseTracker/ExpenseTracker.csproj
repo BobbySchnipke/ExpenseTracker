@@ -67,6 +67,14 @@
     <Compile Include="AddExpenses.Designer.cs">
       <DependentUpon>AddExpenses.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExpenseDataSet.cs">
+      <DependentUpon>ExpenseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpenseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +104,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ExpenseDataSet.xsc">
+      <DependentUpon>ExpenseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ExpenseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExpenseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExpenseDataSet.xss">
+      <DependentUpon>ExpenseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
