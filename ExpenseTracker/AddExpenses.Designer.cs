@@ -48,7 +48,7 @@
             this.expenseDateTimePicker.Location = new System.Drawing.Point(237, 112);
             this.expenseDateTimePicker.Name = "expenseDateTimePicker";
             this.expenseDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.expenseDateTimePicker.TabIndex = 13;
+            this.expenseDateTimePicker.TabIndex = 1;
             this.expenseDateTimePicker.Value = new System.DateTime(2016, 6, 14, 19, 10, 45, 0);
             // 
             // Comments
@@ -103,7 +103,7 @@
             this.expenseTypeComboBox.Location = new System.Drawing.Point(237, 69);
             this.expenseTypeComboBox.Name = "expenseTypeComboBox";
             this.expenseTypeComboBox.Size = new System.Drawing.Size(200, 33);
-            this.expenseTypeComboBox.TabIndex = 8;
+            this.expenseTypeComboBox.TabIndex = 0;
             // 
             // addExpenseLabel
             // 
@@ -121,7 +121,7 @@
             this.viewReportButton.Location = new System.Drawing.Point(37, 234);
             this.viewReportButton.Name = "viewReportButton";
             this.viewReportButton.Size = new System.Drawing.Size(147, 72);
-            this.viewReportButton.TabIndex = 14;
+            this.viewReportButton.TabIndex = 5;
             this.viewReportButton.Text = "View Report";
             this.viewReportButton.UseVisualStyleBackColor = true;
             this.viewReportButton.Click += new System.EventHandler(this.viewReportButton_Click);
@@ -132,7 +132,7 @@
             this.exitButton.Location = new System.Drawing.Point(331, 234);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(147, 72);
-            this.exitButton.TabIndex = 15;
+            this.exitButton.TabIndex = 6;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -143,7 +143,7 @@
             this.addExpenseButton.Location = new System.Drawing.Point(184, 234);
             this.addExpenseButton.Name = "addExpenseButton";
             this.addExpenseButton.Size = new System.Drawing.Size(147, 72);
-            this.addExpenseButton.TabIndex = 16;
+            this.addExpenseButton.TabIndex = 4;
             this.addExpenseButton.Text = "Add Expense";
             this.addExpenseButton.UseVisualStyleBackColor = true;
             this.addExpenseButton.Click += new System.EventHandler(this.addExpenseButton_Click);
@@ -160,7 +160,7 @@
             0});
             this.expenseAmountNumericUpDown.Name = "expenseAmountNumericUpDown";
             this.expenseAmountNumericUpDown.Size = new System.Drawing.Size(200, 31);
-            this.expenseAmountNumericUpDown.TabIndex = 19;
+            this.expenseAmountNumericUpDown.TabIndex = 2;
             this.expenseAmountNumericUpDown.ThousandsSeparator = true;
             // 
             // expenseCommentsTextBox
@@ -169,8 +169,9 @@
             this.expenseCommentsTextBox.Location = new System.Drawing.Point(237, 183);
             this.expenseCommentsTextBox.Name = "expenseCommentsTextBox";
             this.expenseCommentsTextBox.Size = new System.Drawing.Size(200, 31);
-            this.expenseCommentsTextBox.TabIndex = 20;
+            this.expenseCommentsTextBox.TabIndex = 3;
             this.expenseCommentsTextBox.Text = " ";
+            this.expenseCommentsTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.expenseCommentsTextBox_KeyDown);
             // 
             // AddExpenses
             // 

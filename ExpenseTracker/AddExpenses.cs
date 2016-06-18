@@ -42,15 +42,36 @@ namespace ExpenseTracker
 
         private void addExpenseButton_Click(object sender, EventArgs e)
         {
+            // Call the addExpensesInputValidation method
+            addExpenseInputValidation();
+        }
+
+        private void expenseCommentsTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            // if the user presses enter after typing in comments call the addExpenseInputValidation event
+            if (e.KeyCode == Keys.Enter)
+            {
+                addExpenseInputValidation();
+            }
+        }
+
+        private void addExpenseInputValidation()
+        {
             // First check that appropriate values are entered by the user for each input
+
+            //expenseTypeComboBox check
             if (expenseTypeComboBox.Text == "")
             {
-                MessageBox.Show("Please enter a value for Expense Type");
+                MessageBox.Show("Please enter a value for Expense Type", "No expense type chosen");
             }
+
+            // expenseDateTimePicker Check
             else if (expenseDateTimePicker.Value == null)
             {
-                MessageBox.Show("Please choose a date");
+                MessageBox.Show("Please choose a date", "No date chosen");
             }
+
+            // expenseAmountNumericUpDown check
             else if (expenseAmountNumericUpDown.Value == 0)
             {
                 // Ask the user if they intend to add a record with an amount of $0.00
@@ -87,6 +108,7 @@ namespace ExpenseTracker
                 }
             }
 
+            // expenseCommentsTextBox check
             else if (expenseCommentsTextBox.Text == " ")
             {
                 // Ask the user if they intend to add a record with no comment
@@ -103,6 +125,8 @@ namespace ExpenseTracker
 
                 }
             }
+
+            // All pass
             else
             {
                 // If all of the data checks out add the data to the database
@@ -138,6 +162,6 @@ namespace ExpenseTracker
             // Close the connection to the database
             connection.Close();
         }
-        }
-    }
+     }
+}
 
