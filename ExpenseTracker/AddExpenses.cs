@@ -62,13 +62,19 @@ namespace ExpenseTracker
             //expenseTypeComboBox check
             if (expenseTypeComboBox.Text == "")
             {
-                MessageBox.Show("Please enter a value for Expense Type", "No expense type chosen");
+                MessageBox.Show("Please enter choose an expense type", "No expense type chosen");
             }
 
             // expenseDateTimePicker Check
             else if (expenseDateTimePicker.Value == null)
             {
                 MessageBox.Show("Please choose a date", "No date chosen");
+            }
+
+            // paymentTypeComboBox Check
+            else if (paymentTypeComboBox.Text == "")
+            {
+                MessageBox.Show("Please choose a payment type", "Payment type not chosen");
             }
 
             // expenseAmountNumericUpDown check
@@ -88,7 +94,7 @@ namespace ExpenseTracker
                             " add a record with no comment?", "No Comment", MessageBoxButtons.YesNo);
                         if (commentDialogResult == DialogResult.Yes)
                         {
-                            // if the user wishes to add the record with no comment add the record
+                            // if the user wishes to add the record with no comment and no check number to the record
                             addDataToTable();
                         }
 
@@ -143,8 +149,8 @@ namespace ExpenseTracker
             connection.Open();
 
             // Create the insert command
-            SqlCommand sqlCom = new SqlCommand(("INSERT INTO [Expense] ([ExpenseType], [ExpenseDate], [ExpenseAmount], [ExpenseComments])" +
-                "VALUES (@ExpenseType, @ExpenseDate, @ExpenseAmount, @ExpenseComments)"), connection);
+            SqlCommand sqlCom = new SqlCommand(("INSERT INTO [Expense] ([ExpenseType], [ExpenseDate], [ExpenseAmount], [ExpenseComments], [ExpenseCheckNumber], [ExpensePaymentType])" +
+                "VALUES (@ExpenseType, @ExpenseDate, @ExpenseAmount, @ExpenseComments, @ExpenseCheckNumber, @ExpensePaymentType)"), connection);
 
             // Pull values from user input and add them to the database
             sqlCom.Parameters.Add("ExpenseType", SqlDbType.VarChar);
@@ -158,10 +164,43 @@ namespace ExpenseTracker
 
             sqlCom.Parameters.Add("ExpenseComments", SqlDbType.VarChar);
             sqlCom.Parameters["ExpenseComments"].Value = expenseCommentsTextBox.Text;
+
+            sqlCom.Parameters.Add("ExpenseCheckNumber", SqlDbType.VarChar);
+            sqlCom.Parameters["ExpenseCheckNumber"].Value = checkNumberTextBox.Text;
+
+            sqlCom.Parameters.Add("ExpensePaymentType", SqlDbType.VarChar);
+            sqlCom.Parameters["ExpensePaymentType"].Value = paymentTypeComboBox.Text;
+
             sqlCom.ExecuteNonQuery();
             // Close the connection to the database
             connection.Close();
         }
-     }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // if the payment type is Check allow a check number to be entered
+            if (paymentTypeComboBox.Text == "Check")
+            {
+                checkNumberLabel.Enabled = true;
+                checkNumberTextBox.Enabled = true;
+            }
+            else
+            {
+                // when payment type is changed disable the checknumber option
+                checkNumberLabel.Enabled = false;
+                checkNumberTextBox.Enabled = false;
+            }
+        }
+    }
 }
 

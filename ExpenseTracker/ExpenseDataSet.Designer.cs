@@ -287,6 +287,10 @@ namespace ExpenseTracker {
             
             private global::System.Data.DataColumn columnExpenseComments;
             
+            private global::System.Data.DataColumn columnExpenseCheckNumber;
+            
+            private global::System.Data.DataColumn columnExpensePaymentType;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ExpenseDataTable() {
@@ -354,6 +358,22 @@ namespace ExpenseTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ExpenseCheckNumberColumn {
+                get {
+                    return this.columnExpenseCheckNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ExpensePaymentTypeColumn {
+                get {
+                    return this.columnExpensePaymentType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +409,15 @@ namespace ExpenseTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ExpenseRow AddExpenseRow(string ExpenseType, System.DateTime ExpenseDate, decimal ExpenseAmount, string ExpenseComments) {
+            public ExpenseRow AddExpenseRow(string ExpenseType, System.DateTime ExpenseDate, decimal ExpenseAmount, string ExpenseComments, string ExpenseCheckNumber, string ExpensePaymentType) {
                 ExpenseRow rowExpenseRow = ((ExpenseRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ExpenseType,
                         ExpenseDate,
                         ExpenseAmount,
-                        ExpenseComments};
+                        ExpenseComments,
+                        ExpenseCheckNumber,
+                        ExpensePaymentType};
                 rowExpenseRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowExpenseRow);
                 return rowExpenseRow;
@@ -422,6 +444,8 @@ namespace ExpenseTracker {
                 this.columnExpenseDate = base.Columns["ExpenseDate"];
                 this.columnExpenseAmount = base.Columns["ExpenseAmount"];
                 this.columnExpenseComments = base.Columns["ExpenseComments"];
+                this.columnExpenseCheckNumber = base.Columns["ExpenseCheckNumber"];
+                this.columnExpensePaymentType = base.Columns["ExpensePaymentType"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,11 +459,18 @@ namespace ExpenseTracker {
                 base.Columns.Add(this.columnExpenseAmount);
                 this.columnExpenseComments = new global::System.Data.DataColumn("ExpenseComments", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpenseComments);
+                this.columnExpenseCheckNumber = new global::System.Data.DataColumn("ExpenseCheckNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpenseCheckNumber);
+                this.columnExpensePaymentType = new global::System.Data.DataColumn("ExpensePaymentType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpensePaymentType);
                 this.columnExpenseType.AllowDBNull = false;
                 this.columnExpenseType.MaxLength = 50;
                 this.columnExpenseDate.AllowDBNull = false;
                 this.columnExpenseAmount.AllowDBNull = false;
                 this.columnExpenseComments.MaxLength = 10;
+                this.columnExpenseCheckNumber.MaxLength = 50;
+                this.columnExpensePaymentType.AllowDBNull = false;
+                this.columnExpensePaymentType.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -631,6 +662,33 @@ namespace ExpenseTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ExpenseCheckNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableExpense.ExpenseCheckNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ExpenseCheckNumber\' in table \'Expense\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExpense.ExpenseCheckNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ExpensePaymentType {
+                get {
+                    return ((string)(this[this.tableExpense.ExpensePaymentTypeColumn]));
+                }
+                set {
+                    this[this.tableExpense.ExpensePaymentTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsExpenseCommentsNull() {
                 return this.IsNull(this.tableExpense.ExpenseCommentsColumn);
             }
@@ -639,6 +697,18 @@ namespace ExpenseTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetExpenseCommentsNull() {
                 this[this.tableExpense.ExpenseCommentsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsExpenseCheckNumberNull() {
+                return this.IsNull(this.tableExpense.ExpenseCheckNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetExpenseCheckNumberNull() {
+                this[this.tableExpense.ExpenseCheckNumberColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -805,42 +875,22 @@ namespace ExpenseTracker.ExpenseDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ExpenseDate", "ExpenseDate");
             tableMapping.ColumnMappings.Add("ExpenseAmount", "ExpenseAmount");
             tableMapping.ColumnMappings.Add("ExpenseComments", "ExpenseComments");
+            tableMapping.ColumnMappings.Add("ExpenseCheckNumber", "ExpenseCheckNumber");
+            tableMapping.ColumnMappings.Add("ExpensePaymentType", "ExpensePaymentType");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Expense] WHERE (([ExpenseId] = @Original_ExpenseId) AND ([ExpenseType] = @Original_ExpenseType) AND ([ExpenseDate] = @Original_ExpenseDate) AND ([ExpenseAmount] = @Original_ExpenseAmount) AND ((@IsNull_ExpenseComments = 1 AND [ExpenseComments] IS NULL) OR ([ExpenseComments] = @Original_ExpenseComments)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseAmount", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseAmount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ExpenseComments", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseComments", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseComments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseComments", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [Expense] ([ExpenseType], [ExpenseDate], [ExpenseAmount], [ExpenseCom" +
-                "ments]) VALUES (@ExpenseType, @ExpenseDate, @ExpenseAmount, @ExpenseComments)";
+                "ments], [ExpenseCheckNumber], [ExpensePaymentType]) VALUES (@ExpenseType, @Expen" +
+                "seDate, @ExpenseAmount, @ExpenseComments, @ExpenseCheckNumber, @ExpensePaymentTy" +
+                "pe)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseAmount", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseComments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseComments", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Expense] SET [ExpenseId] = @ExpenseId, [ExpenseType] = @ExpenseType, [ExpenseDate] = @ExpenseDate, [ExpenseAmount] = @ExpenseAmount, [ExpenseComments] = @ExpenseComments WHERE (([ExpenseId] = @Original_ExpenseId) AND ([ExpenseType] = @Original_ExpenseType) AND ([ExpenseDate] = @Original_ExpenseDate) AND ([ExpenseAmount] = @Original_ExpenseAmount) AND ((@IsNull_ExpenseComments = 1 AND [ExpenseComments] IS NULL) OR ([ExpenseComments] = @Original_ExpenseComments)));
-SELECT ExpenseId, ExpenseType, ExpenseDate, ExpenseAmount, ExpenseComments FROM Expense WHERE (ExpenseId = @ExpenseId)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseAmount", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseComments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseComments", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseAmount", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseAmount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ExpenseComments", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseComments", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ExpenseComments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseComments", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseCheckNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseCheckNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpensePaymentType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ExpensePaymentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -856,17 +906,22 @@ SELECT ExpenseId, ExpenseType, ExpenseDate, ExpenseAmount, ExpenseComments FROM 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ExpenseType, ExpenseDate, ExpenseAmount, ExpenseComments FROM Expense";
+            this._commandCollection[0].CommandText = "SELECT ExpenseType, ExpenseDate, ExpenseAmount, ExpenseComments, ExpenseCheckNumb" +
+                "er, ExpensePaymentType FROM Expense";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "INSERT INTO [Expense] ([ExpenseType], [ExpenseDate], [ExpenseAmount], [ExpenseCom" +
-                "ments]) VALUES (@ExpenseType, @ExpenseDate, @ExpenseAmount, @ExpenseComments)";
+                "ments], [ExpenseCheckNumber], [ExpensePaymentType]) VALUES (@ExpenseType, @Expen" +
+                "seDate, @ExpenseAmount, @ExpenseComments, @ExpenseCheckNumber, @ExpensePaymentTy" +
+                "pe)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseType", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseDate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseAmount", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseComments", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseComments", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpenseCheckNumber", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ExpenseCheckNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ExpensePaymentType", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ExpensePaymentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -925,46 +980,8 @@ SELECT ExpenseId, ExpenseType, ExpenseDate, ExpenseAmount, ExpenseComments FROM 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ExpenseId, string Original_ExpenseType, System.DateTime Original_ExpenseDate, decimal Original_ExpenseAmount, string Original_ExpenseComments) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ExpenseId));
-            if ((Original_ExpenseType == null)) {
-                throw new global::System.ArgumentNullException("Original_ExpenseType");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_ExpenseType));
-            }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_ExpenseDate));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_ExpenseAmount));
-            if ((Original_ExpenseComments == null)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_ExpenseComments));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ExpenseType, System.DateTime ExpenseDate, decimal ExpenseAmount, string ExpenseComments) {
+        public virtual int Insert(string ExpenseType, System.DateTime ExpenseDate, decimal ExpenseAmount, string ExpenseComments, string ExpenseCheckNumber, string ExpensePaymentType) {
             if ((ExpenseType == null)) {
                 throw new global::System.ArgumentNullException("ExpenseType");
             }
@@ -978,6 +995,18 @@ SELECT ExpenseId, ExpenseType, ExpenseDate, ExpenseAmount, ExpenseComments FROM 
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ExpenseComments));
+            }
+            if ((ExpenseCheckNumber == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(ExpenseCheckNumber));
+            }
+            if ((ExpensePaymentType == null)) {
+                throw new global::System.ArgumentNullException("ExpensePaymentType");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ExpensePaymentType));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -998,61 +1027,8 @@ SELECT ExpenseId, ExpenseType, ExpenseDate, ExpenseAmount, ExpenseComments FROM 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ExpenseId, string ExpenseType, System.DateTime ExpenseDate, decimal ExpenseAmount, string ExpenseComments, int Original_ExpenseId, string Original_ExpenseType, System.DateTime Original_ExpenseDate, decimal Original_ExpenseAmount, string Original_ExpenseComments) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ExpenseId));
-            if ((ExpenseType == null)) {
-                throw new global::System.ArgumentNullException("ExpenseType");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ExpenseType));
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(ExpenseDate));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(ExpenseAmount));
-            if ((ExpenseComments == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(ExpenseComments));
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ExpenseId));
-            if ((Original_ExpenseType == null)) {
-                throw new global::System.ArgumentNullException("Original_ExpenseType");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ExpenseType));
-            }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_ExpenseDate));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_ExpenseAmount));
-            if ((Original_ExpenseComments == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_ExpenseComments));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int ExpenseInsertQuery(string ExpenseType, string ExpenseDate, decimal ExpenseAmount, string ExpenseComments) {
+        public virtual int InsertQuery(string ExpenseType, string ExpenseDate, decimal ExpenseAmount, string ExpenseComments, string ExpenseCheckNumber, string ExpensePaymentType) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((ExpenseType == null)) {
                 throw new global::System.ArgumentNullException("ExpenseType");
@@ -1072,6 +1048,18 @@ SELECT ExpenseId, ExpenseType, ExpenseDate, ExpenseAmount, ExpenseComments FROM 
             }
             else {
                 command.Parameters[3].Value = ((string)(ExpenseComments));
+            }
+            if ((ExpenseCheckNumber == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(ExpenseCheckNumber));
+            }
+            if ((ExpensePaymentType == null)) {
+                throw new global::System.ArgumentNullException("ExpensePaymentType");
+            }
+            else {
+                command.Parameters[5].Value = ((string)(ExpensePaymentType));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
